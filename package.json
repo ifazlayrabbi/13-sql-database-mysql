@@ -1,0 +1,25 @@
+{
+  "name": "08-sql-database",
+  "version": "1.0.0",
+  "description": "CRUD (Create, Read, Update, Delete)",
+  "type": "module",
+  "main": "database.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifazlayrabbi/sql-database.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ifazlayrabbi/sql-database/issues"
+  },
+  "homepage": "https://github.com/ifazlayrabbi/sql-database#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mysql2": "^3.1.2"
+  }
+}

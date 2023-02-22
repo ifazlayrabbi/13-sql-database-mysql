@@ -12,3 +12,6 @@ create table notes (
 insert into notes (title, contents) values
 ('title1', 'describes, how to play cricket'),
 ('title2', 'describes, how to play football');
+
+
+
