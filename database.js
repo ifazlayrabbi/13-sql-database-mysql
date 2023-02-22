@@ -24,4 +24,11 @@ async function create_data (title, contents){
 await create_data('title3', 'describes, how to play dice')
 
 
-
+async function read_data(id){
+  const result = await pool.query(`
+  select * from notes
+  where id = ?
+  `, [id])
+  console.log(result[0][0])
+}
+await read_data(3)
