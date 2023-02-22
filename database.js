@@ -21,14 +21,26 @@ async function create_data (title, contents){
   insert into notes (title, contents) values 
   ( ? , ?)`, [title, contents])
 }
-await create_data('title35', 'describes, how to play bad')
+await create_data('title5', 'describes, how to play nice')
 
 
 
-async function read_data(id){
+async function read_data(title){
   const result = await pool.query(`
   select * from notes
-  where id = ?`, [id])
+  where title = ?`, [title])
   console.log(result[0][0])
 }
-await read_data(35)
+await read_data('title5')
+
+
+
+async function update_data (){
+  await pool.query(`
+    update notes set title = 'title7' where title = 'title5'
+  `)
+}
+await update_data()
+
+
+

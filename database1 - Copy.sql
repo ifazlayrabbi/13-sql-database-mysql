@@ -19,16 +19,16 @@ alter table table1 change column birthDate2 birthDate varchar(10) not null;
 
 insert into table1 values (02, 'Kabir', 'Ali', 05-01-1990);
 
-update table1 set birthDate = '05-01-1990' where (id = 2);
-update table1 set birthDate = '05-01-1990' where (id = 2);
-update table1 set lastName = '' where (id=2);
-update table1 set lastName = 'Ali' where (id=2);
+update table1 set birthDate = '05-01-1990' where id = 2;
+update table1 set birthDate = '05-01-1990' where id = 2;
+update table1 set lastName = '' where id=2;
+update table1 set lastName = 'Ali' where id=2;
 
 insert into table1 values(03, 'Kabir', 'Ali', 1990);
 select * from table1;
 
-update table1 set id='' where (id=3); 
-delete from table1 where (id=3);
+delete from table1 where id=3;
+
 
 
 
