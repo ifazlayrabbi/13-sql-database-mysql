@@ -53,3 +53,10 @@ await delete_data()
 
 
 
+async function read_data(){
+  const result = await pool.query(`
+  select * from notes
+  `)
+  console.log(result[0])
+}
+await read_data()
