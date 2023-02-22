@@ -44,3 +44,12 @@ await update_data()
 
 
 
+async function delete_data (){
+  await pool.query(`
+  delete from notes where id between 31 and 35
+  `)
+}
+await delete_data()
+
+
+
