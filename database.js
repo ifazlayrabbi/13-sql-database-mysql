@@ -5,6 +5,8 @@ const env = process.env
 
 
 
+
+
 const pool = mysql.createPool({
   host: env.HOST,
   user: env.USER,
@@ -12,7 +14,14 @@ const pool = mysql.createPool({
   database: env.DATABASE
 }).promise()
 
-const result = await pool.query('select * from notes')
-console.log(result[0])
+
+async function create_data (title, contents){
+  await pool.query(`
+  insert into notes (title, contents) values 
+  ( ? , ?)
+  `, [title, contents])
+}
+await create_data('title3', 'describes, how to play dice')
+
 
 
