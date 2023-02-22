@@ -15,20 +15,20 @@ const pool = mysql.createPool({
 }).promise()
 
 
+
 async function create_data (title, contents){
   await pool.query(`
   insert into notes (title, contents) values 
-  ( ? , ?)
-  `, [title, contents])
+  ( ? , ?)`, [title, contents])
 }
-await create_data('title3', 'describes, how to play dice')
+await create_data('title35', 'describes, how to play bad')
+
 
 
 async function read_data(id){
   const result = await pool.query(`
   select * from notes
-  where id = ?
-  `, [id])
+  where id = ?`, [id])
   console.log(result[0][0])
 }
-await read_data(3)
+await read_data(35)
