@@ -32,7 +32,7 @@ app.get('/get/:title_name', async (req, res) => {
 app.get('/create', (req, res) => {
   res.sendFile(__dirname + '/create.html')
   // res.sendFile('D:/Work/ACodeX/A Web/projects/p04 - Web Course/back-end/08 SQL Database/create.html')
-  res.render('create')
+  // res.render('create')
 })
 
 
