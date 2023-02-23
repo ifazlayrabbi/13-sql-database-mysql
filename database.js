@@ -16,47 +16,47 @@ const pool = mysql.createPool({
 
 
 
-async function create_data (title, contents){
+export async function create_data (title, contents){
   await pool.query(`
   insert into notes (title, contents) values 
   ( ? , ?)`, [title, contents])
 }
-await create_data('title5', 'describes, how to play nice')
+// await create_data('title5', 'describes, how to play nice')
 
 
 
-async function read_data(title){
+export async function read_data(title){
   const result = await pool.query(`
   select * from notes
   where title = ?`, [title])
-  console.log(result[0][0])
+  return result[0][0]
 }
-await read_data('title5')
+// await read_data('title5')
 
 
 
-async function update_data (){
+export async function update_data (){
   await pool.query(`
     update notes set title = 'title7' where title = 'title5'
   `)
 }
-await update_data()
+// await update_data()
 
 
 
-async function delete_data (){
+export async function delete_data (){
   await pool.query(`
   delete from notes where id between 31 and 35
   `)
 }
-await delete_data()
+// await delete_data()
 
 
 
-async function read_data(){
+export async function read_all_data(){
   const result = await pool.query(`
   select * from notes
   `)
-  console.log(result[0])
+  return result[0]
 }
-await read_data()
+// await read_all_data()
