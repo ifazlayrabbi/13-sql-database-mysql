@@ -6,6 +6,9 @@ dotenv.config()
 
 app.set('view engine', 'ejs')
 
+import bodyParser from 'body-parser'
+app.use(bodyParser.urlencoded({extended:true}))
+
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -37,10 +40,11 @@ app.get('/create', (req, res) => {
 
 
 
-app.post('/create', (req, res) => {
+app.post('/create', async (req, res) => {
   const title = req.body.title
   const contents = req.body.contents
-
+  await create_data(title, contents)
+  res.redirect('/get/'+title)
 })
 
 
