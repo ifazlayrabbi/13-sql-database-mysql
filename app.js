@@ -12,14 +12,23 @@ import {create_data, read_data, update_data, delete_data, read_all_data} from '.
 
 
 
-// app.get('/', async (req, res) => {
-//   const readAllData = await read_all_data()
-//   res.send(readAllData)
-// })
-
 app.get('/', async (req, res) => {
-  const readData = await read_data('title6')
+  const readAllData = await read_all_data()
+  res.send(readAllData)
+})
+
+app.get('/:title_name', async (req, res) => {
+  const titleName = req.params.title_name
+  const readData = await read_data(titleName)
   res.send(readData)
+})
+
+app.get('/create', async (req, res) => {
+  // const titleName = req.params.title_name
+  // const readData = await read_data(titleName)
+  // res.send(readData)
+
+  res.sendFile('/create.html')
 })
 
 

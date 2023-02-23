@@ -20,6 +20,7 @@ export async function create_data (title, contents){
   await pool.query(`
   insert into notes (title, contents) values 
   ( ? , ?)`, [title, contents])
+  await read_data(title)
 }
 // await create_data('title5', 'describes, how to play nice')
 
