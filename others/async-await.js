@@ -18,15 +18,32 @@ const processResponse =  response => {
 }
 
 let info = 'Yahoo'
+// makeRequest(info).then(resolveMsg => {
+//   console.log('Promise resolved.')
+//   console.log('Response Msg: ', resolveMsg)
+//   processResponse(resolveMsg).then(responseMsg => console.log(responseMsg))
+
+// }).catch(rejectMsg => {
+//   console.log('Promise rejected.')
+//   console.log('Response Msg: ', rejectMsg)
+//   processResponse(rejectMsg).then(responseMsg => console.log(responseMsg))
+// })
+
 makeRequest(info).then(resolveMsg => {
   console.log('Promise resolved.')
   console.log('Response Msg: ', resolveMsg)
-  processResponse(resolveMsg).then(responseMsg => console.log(responseMsg))
+  return processResponse(resolveMsg)
+}).then(responseMsg => console.log(responseMsg)
 
-}).catch(rejectMsg => {
+).catch(rejectMsg => {
   console.log('Promise rejected.')
   console.log('Response Msg: ', rejectMsg)
-  processResponse(rejectMsg).then(responseMsg => console.log(responseMsg))
 })
+
+
+
+
+
+
 
 
