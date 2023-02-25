@@ -20,10 +20,9 @@ export async function create_data (title, contents){
   await pool.query(`
   insert into notes (title, contents) values 
   ( ? , ?)`, [title, contents])
-  await read_data(title)
+  console.log(await read_data(title))
 }
-// await create_data('title5', 'describes, how to play nice')
-
+// await create_data('title12', 'describes, how to play await2')
 
 
 export async function read_data(title){
@@ -60,4 +59,4 @@ export async function read_all_data(){
   `)
   return result[0]
 }
-// await read_all_data()
+// console.log(await read_all_data())
