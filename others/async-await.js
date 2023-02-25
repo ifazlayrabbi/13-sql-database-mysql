@@ -24,11 +24,11 @@ let value = 'Yahoo'
 
 // makeRequest(value).then(resolveMsg => {
 //   console.log('Promise resolved.')
-//   processResponse(resolveMsg).then(responseMsg => console.log(responseMsg))
+//   processResponse(resolveMsg).then(responseMsg => console.log('Response Msg: ', responseMsg))
 
 // }).catch(rejectMsg => {
 //   console.log('Promise rejected.')
-//   processResponse(rejectMsg).then(responseMsg => console.log(responseMsg))
+//   processResponse(rejectMsg).then(responseMsg => console.log('Response Msg: ', responseMsg))
 // })
 
 
@@ -36,7 +36,7 @@ let value = 'Yahoo'
 // makeRequest(value).then(resolveMsg => {
 //   console.log('Promise resolved.')
 //   return processResponse(resolveMsg)
-// }).then(responseMsg => console.log(responseMsg)
+// }).then(responseMsg => console.log('Response Msg: ', responseMsg)
 
 // ).catch(rejectMsg => {
 //   console.log('Promise rejected.')
@@ -47,24 +47,53 @@ let value = 'Yahoo'
 
 // const func1 = async () => {
 //   try {
-//     const make_request = await makeRequest(value)
+//     const resp1 = await makeRequest(value)   // every promise function is an asynchronus function, here, 'await f(para1)' is supposed to store the 'resolve value', if this asynchronous function returns 'reject value' then to store that value, we have to use catch function 
 //     console.log('Response Received.')
-//     const process_response = await processResponse(make_request)
-//     console.log(process_response)
-//   } catch (response) {
-//     console.log(response)
+//     const resp2 = await processResponse(resp1)
+//     console.log('Response Msg: ', resp2)
+
+//   } catch (resp1) {
+//     console.log('Response Received.')
+//     const resp2 = await processResponse(resp1)
+//     console.log('Response Msg: ', resp2)
 //   }
 // }
 // func1()
 
 
 
-// console.log(makeRequest(value))
-// Promise { 'Succeed' }
+// const func1 = async () => {
+//   try {
+//     const resp1 = await makeRequest(value)
+//     console.log('Response Received.')
+//     const resp2 = await processResponse(resp1)
+//     console.log('Response Msg: ', resp2)
+
+//   } catch (resp1) {
+//     console.log('Response Received.')
+//     console.log('Response Msg: ', resp1)
+//   }
+// }
+// func1()
+
+
+
+
+
+
+
+
+
+
+
+// console.log(makeRequest(value))    // Result: Promise { 'Succeed' }
 
 // makeRequest(value)
 // .then(para1 => console.log(para1))
 // .catch(para1 => console.log(para1))
+
+
+// console.log(await makeRequest(value))    // Result: Uncaught Exception
 
 // try {
 //   console.log(await makeRequest(value))
@@ -74,16 +103,13 @@ let value = 'Yahoo'
 
 
 
-// const func1 = async () => {
-//   try {
-//     const request = await makeRequest(value)
-//     const response = await processResponse(request)
-//     console.log(response)
-//   } catch (response) {
-//     console.log(response)
-//   }
-// }
-// func1()
+
+
+
+
+
+
+
 
 const func1 = async () => {
   try {
@@ -93,6 +119,12 @@ const func1 = async () => {
   }
 }
 func1()
+
+// try {
+//   console.log(await processResponse(await makeRequest(value)))
+// } catch (response) {
+//   console.log(await processResponse(response))
+// }
 
 // makeRequest(value)
 // .then(para1 => processResponse(para1))
