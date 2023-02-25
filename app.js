@@ -1,6 +1,8 @@
 import express from 'express'
 const app = express()
 
+app.use(express.json())
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -41,7 +43,8 @@ app.get('/create', (req, res) => {
 
 app.post('/create', async (req, res) => {
   const {title, contents} = req.body
-  await create_data(title, contents)
+  const createData = await create_data(title, contents)
+  // res.send(createData)
   res.redirect('/notes/'+title)
 })
 

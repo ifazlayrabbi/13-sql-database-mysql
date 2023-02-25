@@ -21,6 +21,7 @@ export async function create_data (title, contents){
   insert into notes (title, contents) values 
   ( ? , ?)`, [title, contents])
   console.log(await read_data(title))
+  return await read_data(title)
 }
 // await create_data('title12', 'describes, how to play await2')
 
@@ -46,7 +47,7 @@ export async function update_data (){
 
 export async function delete_data (){
   await pool.query(`
-  delete from notes where id between 31 and 35
+  delete from notes where id between 3 and 80
   `)
 }
 // await delete_data()
