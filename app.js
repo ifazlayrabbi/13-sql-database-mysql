@@ -26,7 +26,7 @@ app.get('/', async (req, res) => {
   res.send(readAllData)
 })
 
-app.get('/get/:title_name', async (req, res) => {
+app.get('/notes/:title_name', async (req, res) => {
   const titleName = req.params.title_name
   const readData = await read_data(titleName)
   res.send(readData)
@@ -44,7 +44,7 @@ app.post('/create', async (req, res) => {
   const title = req.body.title
   const contents = req.body.contents
   await create_data(title, contents)
-  res.redirect('/get/'+title)
+  res.redirect('/notes/'+title)
 })
 
 
