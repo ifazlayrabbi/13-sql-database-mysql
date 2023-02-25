@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CRUD (Create, Read, Update, Delete)",
   "type": "module",
-  "main": "database.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
-    "express": "^4.18.2",
+    "express": "^5.0.0-beta.1",
     "mysql2": "^3.1.2"
   }
 }
