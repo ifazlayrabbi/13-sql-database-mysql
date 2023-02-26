@@ -66,5 +66,5 @@ export async function read_all_data (){
   `)
   return readAllData[0]
 }
-console.log(await read_all_data())
+// console.log(await read_all_data())
 
