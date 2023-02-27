@@ -16,54 +16,91 @@ import {query, create, read, update, deleteX, read_all} from './database.js'
 
 
 
+const pages = ['/query', '/create', '/read', '/update', '/delete']
+
+pages.forEach((element) => {
+  app.get(element, async (req, res) => {
+    res.sendFile(__dirname + '/pages' + element + '.html')
+  })
+})
+
+app.get('/', async (req, res) => {
+  res.sendFile(__dirname + '/pages/home.html')
+})
+
+app.get('/read_all', async (req, res) => {
+  let readAll = await read_all ()
+  console.log(readAll)
+  res.send(readAll)
+})
+
+
+
+// app.get('/query', async (req, res) =>{
+//   res.sendFile(__dirname + '/pages/query.html')
+// })
+
+// app.get('/create', async (req, res) => {
+//   res.sendFile(__dirname + '/pages/create.html')
+// })
+
+// app.get('/read', async (req, res) => {
+//   res.sendFile(__dirname + '/pages/read.html')
+// })
+
+// app.get('/update', async (req, res) => {
+//   res.sendFile(__dirname + '/pages/update.html')
+// })
+
+// app.get('/delete', async (req, res) => {
+//   res.sendFile(__dirname + '/pages/delete.html')
+// })
 
 
 
 
-app.get('/query', async (req, res) =>{
+
+
+
+app.post('/query', async (req, res) =>{
   // insert into notes (title, contents) values ('title3', '3');
   // select * from notes where title='title1';
   // update notes set title='title5' where id='124';
   // delete from notes where id between 121 and 124;
 
-  let sql = `
-
-  insert into notes (title, contents) values ('title5', '5');
-
-  `
+  const sql = req.body.sql
+  console.log(sql)
   res.send (await query(sql))
 })
 
-app.get('/create', async (req, res) => {
-  let title = 'title2'
-  let contents = '2'
+
+app.post('/create', async (req, res) => {
+  const {title, contents} = req.body
   res.send(await create (title, contents))
 })
 
-app.get('/read', async (req, res) => {
-  let title = 'title1'
+app.post('/read', async (req, res) => {
+  const title = req.body.title
   let readD = await read(title)
   console.log(readD)
   res.send(readD)
 })
 
-app.get('/update', async (req, res) => {
-  let newData = 'title3'
-  let oldData = 'title2'
-  res.send(await update(newData, oldData))
+app.post('/update', async (req, res) => {
+  const {newTitle, oldTitle} = req.body
+  res.send(await update(newTitle, oldTitle))
 })
 
-app.get('/delete', async (req, res) => {
-  res.send (await deleteX(116, 121))
+app.post('/delete', async (req, res) => {
+  const {startId, endId} = req.body
+  res.send (await deleteX(startId, endId))
 })
 
-app.get('/', async (req, res) => {
-  let readAll = await read_all ()
-  console.log(readAll)
-  res.send (readAll)
-})
-
-
+// app.post('/', async (req, res) => {
+//   let readAll = await read_all ()
+//   console.log(readAll)
+//   res.send (readAll)
+// })
 
 
 
