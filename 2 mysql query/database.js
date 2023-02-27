@@ -13,58 +13,69 @@ const pool = mysql.createPool({
 
 
 
-export async function create_data (title, contents){
+export async function query (sql) {
+  const query = await pool.query ('' + sql)
+  console.log(query[0])
+  return query[0]
+}
+let sql = `select * from notes;`
+// await query (sql)
+
+
+
+export async function create (title, contents){
   await pool.query(`
     insert into notes (title, contents) 
     values (?, ?);
   `, [title, contents])
-  console.log(await read_data(title))
-  return await read_data(title)
+  console.log(await read (title))
+  return await read (title)
 }
-// await create_data ('title6', '6')
+// await create ('title6', '6')
 
 
 
-export async function read_data (title){
+export async function read (title){
   const readData = await pool.query(`
     select * from notes 
     where title = ?;
   `, [title])
   return readData[0][0]
 }
-// console.log(await read_data('title6'))
+// console.log(await read ('title6'))
 
 
 
-export async function update_data (newData, oldData){
+export async function update (newData, oldData){
+  // alter table notes change column title newTitle varchar(50) not null
   await pool.query(`
     update notes set title = ? 
     where title = ?;
   `, [newData, oldData])
-  console.log(await read_data(newData))
-  return await read_data(newData)
+  console.log(await read (newData))
+  return await read (newData)
 }
-// await update_data ('title7', 'title6')
+// await update ('title7', 'title6')
 
 
 
-export async function delete_data (start, end){
+export async function deleteX (start, end){
   await pool.query(`
     delete from notes 
     where id between ? and ?;
   `, [start, end])
-  console.log(await read_all_data())
-  return await read_all_data()
+  console.log(await read_all())
+  return await read_all()
 }
-// await delete_data(2, 108)
+// await deleteX (3, 114)
 
 
 
-export async function read_all_data (){
+export async function read_all (){
   const readAllData = await pool.query(`
     select * from notes;
   `)
   return readAllData[0]
 }
-// console.log(await read_all_data())
+// console.log(await read_all())
 
