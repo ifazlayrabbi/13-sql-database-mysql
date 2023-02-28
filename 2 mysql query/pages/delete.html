@@ -8,10 +8,12 @@
 <body style="padding:7% 15%; background-color: #d8f2fc; text-align: center;">
   <h1>Delete Data</h1>
   <form action="/delete" method="post">
+    <label><p>Table Name: </p></label>
+    <input type="text" name="table_name" placeholder="notes"><br>
     <label><p>Start Id: </p></label>
-    <input type="text" name="startId" placeholder="3"><br>
+    <input type="text" name="start_id" placeholder="3"><br>
     <label><p>End Id: </p></label>
-    <input type="text" name="endId" placeholder="12"><br><br>
+    <input type="text" name="end_id" placeholder="12"><br><br>
     <button type="submit">Delete</button>
   </form>
 </body>

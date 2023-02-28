@@ -59,23 +59,25 @@ export async function update (newData, oldData){
 
 
 
-export async function deleteX (start, end){
+export async function deleteX (tableName, start, end){
   await pool.query(`
-    delete from notes 
+    delete from ${tableName} 
     where id between ? and ?;
   `, [start, end])
-  console.log(await read_all())
-  return await read_all()
+  console.log(await readAll(tableName))
+  return await readAll(tableName)
 }
 // await deleteX (3, 114)
 
 
 
-export async function read_all (){
+export async function readAll (table_name){
   const readAllData = await pool.query(`
-    select * from notes;
+    select * from ${table_name};
   `)
+  console.log(readAllData[0])
   return readAllData[0]
 }
-// console.log(await read_all())
+// const tableName = 'notes'
+// console.log(await readAll(tableName))
 
