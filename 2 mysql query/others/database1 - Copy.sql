@@ -36,7 +36,7 @@ delete from table1 where id in (3, 5, 20);
 
 
 
-
+alter table customer rename to customers;
 alter table table1 change column firstName firstN varchar(30) not null;
 alter table table1 change column lastName lastN varchar(20) not null;
 update table1 set lastN = 'Mia' where firstN = 'Kaa';
