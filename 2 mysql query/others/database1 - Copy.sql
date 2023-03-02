@@ -37,8 +37,32 @@ delete from table1 where id in (3, 5, 20);
 
 
 alter table customer rename to customers;
+alter table orders add column order_item varchar (30);
 alter table table1 change column firstName firstN varchar(30) not null;
 alter table table1 change column lastName lastN varchar(20) not null;
 update table1 set lastN = 'Mia' where firstN = 'Kaa';
 
 
+
+Relations between tables
+------------------------------
+
+select order_item, order_number, first_name, age
+from orders, customers
+where orders.customer_id = customers.id;
+
+select order_item, order_number, first_name, age
+from orders inner join customers
+on orders.customer_id = customers.id;
+
+select order_item, order_number, first_name, age
+from orders natural join customers;
+-------------
+
+select order_item, order_number, name, price
+from orders, products
+where orders.product_id = products.id;
+
+select order_item, order_number, name, price
+from orders inner join products
+where orders.product_id = products.id;
