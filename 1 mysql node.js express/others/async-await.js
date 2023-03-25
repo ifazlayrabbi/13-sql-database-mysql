@@ -1,7 +1,7 @@
 
 const makeRequest = para1 => {
   return new Promise((resolve, reject) => {
-    console.log(`Making Request to ?`, [para1])
+    console.log('Making Request to ' + para1)
 
     if (para1 == 'Google')
       resolve('Succeed')
@@ -17,8 +17,6 @@ const processResponse =  para2 => {
   })
 }
 
-
-
 let value = 'Yahoo'
 // let value = 'Google'
 
@@ -30,8 +28,6 @@ let value = 'Yahoo'
 //   console.log('Promise rejected.')
 //   processResponse(rejectMsg).then(responseMsg => console.log('Response Msg: ', responseMsg))
 // })
-
-
 
 // makeRequest(value).then(resolveMsg => {
 //   console.log('Promise resolved.')
@@ -111,20 +107,20 @@ let value = 'Yahoo'
 
 
 
-const func1 = async () => {
-  try {
-    console.log(await processResponse(await makeRequest(value)))
-  } catch (response) {
-    console.log(await processResponse(response))
-  }
-}
-func1()
-
-// try {
-//   console.log(await processResponse(await makeRequest(value)))
-// } catch (response) {
-//   console.log(await processResponse(response))
+// const func1 = async () => {
+//   try {
+//     console.log(await processResponse(await makeRequest(value)))
+//   } catch (response) {
+//     console.log(await processResponse(response))
+//   }
 // }
+// func1()
+
+try {
+  console.log(await processResponse(await makeRequest(value)))
+} catch (response) {
+  console.log(await processResponse(response))
+}
 
 // makeRequest(value)
 // .then(para1 => processResponse(para1))
